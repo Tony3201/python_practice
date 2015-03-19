@@ -1,2 +1,2 @@
 # python
-python tools and project --leo
+python tools and projects --leo

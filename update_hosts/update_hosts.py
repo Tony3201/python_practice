@@ -2,9 +2,14 @@
 
 import urllib
 import os
-import time
+import platform
 
-hosts_file = 'C:\Windows\System32\drivers\etc\\hosts'
+if platform.system() == 'Windows':
+    hosts_file = 'C:\Windows\System32\drivers\etc\\leohosts'
+elif platform.system() == 'Linux':
+    hosts_file = '/etc/leohosts'
+else:
+    print 'you OS is not Linux or Windows'
 def gethtml(url):
     page = urllib.urlopen(url)
     html = page.read()

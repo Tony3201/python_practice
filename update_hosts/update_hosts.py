@@ -24,7 +24,7 @@ elif platform.system() == 'Linux':
 else:
     print 'you OS is not Linux or Windows'
 
-html = gethtml('http://www.findspace.name/adds/hosts')
+html = gethtml('http://www.findspace.name/adds/hosts2')
 
 fp = open(hosts_file,'w+')
 fp.write(html)

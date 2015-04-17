@@ -22,7 +22,8 @@ if platform.system() == 'Windows':
 elif platform.system() == 'Linux':
     hosts_file = '/etc/hosts'
 else:
-    print 'you OS is not Linux or Windows'
+    print 'OS is not Linux or Windows'
+    exit(1)
 
 html = gethtml('http://www.findspace.name/adds/hosts2')
 

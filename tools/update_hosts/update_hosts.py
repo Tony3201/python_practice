@@ -12,6 +12,17 @@ TBD
 4)have not permission to wirte this hosts
 '''
 
+
+hostsfile='C:\Windows\System32\drivers\etc\hosts'
+url = 'http://googleips-google.stor.sinaapp.com/hosts' 
+
+
+f = urllib2.urlopen(url) 
+data = f.read() 
+with open(hostsfile, "w+") as code:     
+    code.write(data)
+
+'''
 def gethtml(url):
     page = urllib.urlopen(url)
     html = page.read()
@@ -30,3 +41,4 @@ html = gethtml('http://www.findspace.name/adds/hosts2')
 fp = open(hosts_file,'w+')
 fp.write(html)
 fp.close
+'''

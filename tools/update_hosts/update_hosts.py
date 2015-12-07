@@ -17,6 +17,7 @@ hostsfile='C:\Windows\System32\drivers\etc\hosts'
 url = 'http://googleips-google.stor.sinaapp.com/hosts' 
 
 
+
 f = urllib2.urlopen(url) 
 data = f.read() 
 with open(hostsfile, "w+") as code:     

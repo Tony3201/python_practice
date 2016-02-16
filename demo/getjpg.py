@@ -1,3 +1,6 @@
+#!/usr/bin/python
+#coding:utf8
+
 __author__ = 'LEo'
 import re
 import urllib
@@ -6,6 +9,8 @@ def gethtml(url):
     page = urllib.urlopen(url)
     html = page.read()
     return html
+
+
 
 def getjpg(html):
     reg = r'src="(http://imgsrc.+?.jpg)" pic_ext='

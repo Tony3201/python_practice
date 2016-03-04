@@ -1,0 +1,21 @@
+# Language cn translations for py_i package.
+# Copyright (C) 2016 THE py_i'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the py_i package.
+# root <root@leo>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: py_i 18n\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-04 13:54+0800\n"
+"PO-Revision-Date: 2016-03-04 13:55+0800\n"
+"Last-Translator: root <root@leo>\n"
+"Language-Team: Language cn\n"
+"Language: cn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: i18n_demo.py:8
+msgid "leo"
+msgstr "李松松"

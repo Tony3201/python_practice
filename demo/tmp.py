@@ -1,7 +1,10 @@
 #!/usr/bin/python
 
-import os
+import argparse
 
-print "Content-Type: text/plain\n\n"
-for key in os.environ.keys():
-    print "%30s %s \n" % (key, os.environ[key])
+parser = argparse.ArgumentParser()
+parser.add_argument('--foo')
+parser.add_argument('bar', nargs='?')
+print parser.parse_args(['--foo', '1', 'BAR'])
+print parser.parse_args([])
+print parser.parse_args([])

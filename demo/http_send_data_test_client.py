@@ -10,12 +10,13 @@ def sendRequest(data):
     OK = 200
 
     # master ip and port
-    masterUrl = '192.168.3.121'
-    masterPort = 8081
+    masterUrl = '192.168.0.95'
+    masterPort = 6322
     httpClient = None
     try:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         httpClient = httplib.HTTPConnection(masterUrl, masterPort, timeout=30)
+        print httpClient
         httpClient.request('POST', '/', json.dumps(data), headers)
 
         response = httpClient.getresponse()
@@ -38,10 +39,7 @@ def sendRequest(data):
 
 
 if __name__ == '__main__':
-    f = open('./testData')
-    data = f.read()
-    print len(data)
-    ReqData = {'data': data}
+
+    ReqData = {'Status': 0, 'NumMaxJob': 0, 'NumJob': 0, 'HostName': '', 'NumSsuspJob': 0, 'NumRunJob': 0, 'CmdOpcode': 41, 'ReqOpcode': 1, 'UserJobSlotsLimit': 0, 'NumReserve': 0}
     reply = sendRequest(ReqData)
     print reply
-    print len(reply['data'])

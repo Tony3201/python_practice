@@ -9,10 +9,10 @@ class MyStruct:
     def __init__(self):
         self.test1 = 8
 
-
+  
 ms = MyStruct()
 
-ms.foo = 1
+ms.foo = 88
 ms.bar = 2
 
 print ms.foo

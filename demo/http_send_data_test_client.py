@@ -4,6 +4,27 @@
 import httplib
 import json
 
+class queryHostInfoReq:
+    def __init__(self):
+        self.HostName = ''
+        self.Status = 0
+        self.UserJobSlotsLimit = 0
+        self.NumMaxJob = 0
+        self.NumJob = 0
+        self.NumRunJob = 0
+        self.NumSsuspJob = 0
+        self.NumReserve = 0
+
+        self.CmdOpcode = 41
+        self.ReqOpcode = 1
+
+    # convert obj to dict for json encoding
+    def convertObjToDict(self):
+        dict = {}
+        dict.update(self.__dict__)
+        return dict
+
+
 
 def sendRequest(data):
     # the following constants for integer status codes:
@@ -11,12 +32,12 @@ def sendRequest(data):
 
     # master ip and port
     masterUrl = '192.168.0.95'
-    masterPort = 6322
+    masterPort = 6323
     httpClient = None
     try:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-        httpClient = httplib.HTTPConnection(masterUrl, masterPort, timeout=30)
-        print httpClient
+        httpClient = httplib.HTTPConnection('192.168.0.95:6323', timeout=30)
+        print masterUrl,masterPort
         httpClient.request('POST', '/', json.dumps(data), headers)
 
         response = httpClient.getresponse()
@@ -40,6 +61,5 @@ def sendRequest(data):
 
 if __name__ == '__main__':
 
-    ReqData = {'Status': 0, 'NumMaxJob': 0, 'NumJob': 0, 'HostName': '', 'NumSsuspJob': 0, 'NumRunJob': 0, 'CmdOpcode': 41, 'ReqOpcode': 1, 'UserJobSlotsLimit': 0, 'NumReserve': 0}
-    reply = sendRequest(ReqData)
-    print reply
+    HostInfoReq = queryHostInfoReq().convertObjToDict()
+    sendRequest(HostInfoReq)

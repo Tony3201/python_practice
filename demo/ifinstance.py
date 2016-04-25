@@ -8,7 +8,6 @@ class queryReq:
     isAllStates = "a"
     isFinish = "d"
     isPend = "p"
-  
 if __name__ == '__main__':
 
     newReq = queryReq()

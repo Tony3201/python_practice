@@ -4,8 +4,8 @@
 import argparse
 
 
-parent_parser = argparse.ArgumentParser(prog="parent",add_help=False)
-parent_parser.add_argument("--parent")
+# parent_parser = argparse.ArgumentParser(prog="parent",add_help=False)
+# parent_parser.add_argument("--parent")
 
 parser = argparse.ArgumentParser(
 	prog="demo",
@@ -16,7 +16,7 @@ description 2
 	epilog='''epilog 1
 epilog 2
 	epilog 3''',
-	parents=[parent_parser],
+	# parents=[parent_parser],
 	# formatter_class=argparse.RawDescriptionHelpFormatter,
 	formatter_class=argparse.RawTextHelpFormatter,
 	# formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -26,13 +26,17 @@ epilog 2
 	)
 
 
-parser.add_argument("--demo1")
-parser.add_argument("-demo2")
-parser.add_argument("++demo3")
-parser.add_argument("/demo4")
-parser.add_argument("name")
-parser.add_argument("--demo1")
+parser.add_argument("-n")
+# parser.add_argument("-demo2")
+# parser.add_argument("++demo3")
+# parser.add_argument("/demo4")
+# parser.add_argument("name")
+# parser.add_argument("--demo1")
 # Namespace(demo1='d1', demo2='d2', demo3='d3', demo4='d4', name='leo', parent='d5')
 args = parser.parse_args()
 
 print args
+
+n = argparse.Namespace()
+n.n='2,3'
+print n.n

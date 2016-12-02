@@ -3,14 +3,13 @@
 
 import psutil
 
-socketnum = psutil.cpu_count(logical=False)
-corenum = psutil.cpu_count(logical=True)
+logical_cores = psutil.cpu_count(logical=True)
+physical_cores = psutil.cpu_count(logical=False)
 
+print "logical_cores: %d" % (logical_cores)
+print "physical_cores: %d" % (physical_cores)
 
-print "socketnum=%d" % (socketnum)
-print "corenum=%d" % (corenum)
-
-if corenum / socketnum == 2:
-    print "threadnum=2"
+if logical_cores / physical_cores == 2:
+    print "hyper threading: enable"
 else:
-    print "threadnum=1"
+    print "hyper threading: disable"

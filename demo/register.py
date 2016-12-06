@@ -10,7 +10,8 @@
 # source:
 # http://www.pythonware.com/products/works/articles/regpy20.htm
 #
-# modified by Valentine Gogichashvili as described in http://www.mail-archive.com/distutils-sig@python.org/msg10512.html
+# modified by Valentine Gogichashvili as described in
+# http://www.mail-archive.com/distutils-sig@python.org/msg10512.html
 
 import sys
 
@@ -27,10 +28,11 @@ pythonpath = "%s;%s\\Lib\\;%s\\DLLs\\" % (
     installpath, installpath, installpath
 )
 
+
 def RegisterPy():
     try:
         reg = OpenKey(HKEY_CURRENT_USER, regpath)
-    except EnvironmentError as e:
+    except EnvironmentError:
         try:
             reg = CreateKey(HKEY_CURRENT_USER, regpath)
             SetValue(reg, installkey, REG_SZ, installpath)
@@ -42,13 +44,14 @@ def RegisterPy():
         print "--- Python", version, "is now registered!"
         return
     if (QueryValue(reg, installkey) == installpath and
-        QueryValue(reg, pythonkey) == pythonpath):
+            QueryValue(reg, pythonkey) == pythonpath):
         CloseKey(reg)
         print "=== Python", version, "is already registered!"
         return
     CloseKey(reg)
     print "*** Unable to register!"
     print "*** You probably have another Python installation!"
+
 
 if __name__ == "__main__":
     RegisterPy()

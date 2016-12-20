@@ -13,4 +13,5 @@ def gcd(x, y):
         return gcd(y, x % y)
 
 
+print 'gcd(60, 24) = %d' % (gcd(60, 24))
 print 'gcd(24, 60) = %d' % (gcd(24, 60))

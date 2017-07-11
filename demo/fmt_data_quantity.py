@@ -4,7 +4,7 @@
 def fmt_data_quantity(bytes, multiple=1024):
     try:
         if bytes < multiple * multiple:
-            return "%dB" % (bytes)
+            return "%dK" % ((bytes) / multiple)
 
         quantity = bytes / multiple / multiple
         for unit in ['M', 'G', 'T', 'P', 'E', 'Z']:
@@ -20,4 +20,7 @@ def fmt_data_quantity(bytes, multiple=1024):
 
 
 if __name__ == '__main__':
-    print fmt_data_quantity(1024 * 1025)
+    test = [1023, 1024, 1025, 1024 * 1023, 1024 *
+            1024, 1024 * 1025, 1024 * 1024 * 1024 * 9]
+    for data in test:
+        print fmt_data_quantity(data)

@@ -1,20 +1,23 @@
 #!/usr/bin/python
 
 
-def fmt_data_quantity(quantity, multiple=1024):
+def fmt_data_quantity(bytes, multiple=1024):
     try:
-        abs_quantity = abs(quantity)
+        if bytes < multiple * multiple:
+            return "%dB" % (bytes)
+
+        quantity = bytes / multiple / multiple
         for unit in ['M', 'G', 'T', 'P', 'E', 'Z']:
             # if quantity < 10G, unit is M
-            if abs_quantity < multiple * 10:
-                return "%d%s" % (abs_quantity, unit)
-            abs_quantity /= multiple
+            if quantity < multiple * 10:
+                return "%d%s" % (quantity, unit)
+            quantity /= multiple
 
-        return "%d%s" % (abs_quantity, 'Y')
+        return "%d%s" % (quantity, 'Y')
 
     except TypeError:
         return '0M'
 
+
 if __name__ == '__main__':
-    print fmt_data_quantity(715)
-    print fmt_data_quantity(2014)
+    print fmt_data_quantity(1024 * 1025)

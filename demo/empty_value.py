@@ -11,7 +11,7 @@ else:
 
 int_0 = 0
 
-if int_0:
+if int_0 is not None:
     print 'if int_0 is True'
 else:
     print 'if int_0 is False'

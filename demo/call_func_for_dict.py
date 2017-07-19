@@ -14,3 +14,6 @@ print dict
 modify(dict)
 
 print dict
+
+for key in dict:
+    print key

@@ -15,3 +15,6 @@ if int_0:
     print 'if int_0 is True'
 else:
     print 'if int_0 is False'
+
+arrayjob.jobName = arrayjob.jobName[:len(arrayjob.jobName) - 1] \
+    + '-' + str(replydata.get('ArrIdxSlice')[-1]) + ']'

@@ -1,11 +1,26 @@
-#!/usr/bin/python
+# #!/usr/bin/python
 
-jobid = [1, 2, 3, 4]
-arrjobid = [2, 5, 6, 7]
-jobarryidx = [2, 9, 10, 11]
 
-if (i for i in jobid if i not in arrjobid):
-    unexistJobid = [
-        i for i in jobid if i not in arrjobid and i not in jobarryidx]
+# from argparse import ArgumentParser
 
-print unexistJobid
+
+# parser = ArgumentParser(
+#     prog='jjobs',
+#     description='description: displays information about jobs')
+
+# parser.add_argument('-m',
+#                     type=str,
+#                     help='only displays jobs in the specified hosts',
+#                     metavar='host_name')
+
+
+# args = parser.parse_args()
+# print args.m
+
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--mode', required=True, type=str)
+# parser.add_argument('--mode')
+p = parser.parse_args()
+print 'p.mode= <%s>' % p.mode.split()

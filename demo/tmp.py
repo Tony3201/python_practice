@@ -4,3 +4,7 @@
 import getpass
 
 print getpass.getuser()
+
+
+for x in xrange(0, 3):
+    print x

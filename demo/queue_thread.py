@@ -9,12 +9,12 @@ queue = Queue.Queue()
 
 
 def testa():
-    time.sleep(10)
-    queue.put('testa')
+    time.sleep(1)
+    queue.put(True)
 
 
 def testb():
-    time.sleep(5)
+    time.sleep(1)
     queue.put('testb')
 
 

@@ -1,2 +1,4 @@
--f
-bar
+[Host]
+HOSTNAME          MXJ    RESOURCES
+default            !       ()
+# master             !       ()

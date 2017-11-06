@@ -1,30 +1,51 @@
 #!/usr/bin/env python
 # coding = utf8
 
-import win32net
-import win32netcon
+import subprocess
+import platform
 
 
-def get_total_login_users(host_name=None):
-    resume_handle = 1
+def get_total_login_users():
+    total_login_users = 0
+    login_user_dict = {}
     user_set = set()
-    try:
-        while resume_handle:
-            (user_list, _, rt_res) = win32net.NetWkstaUserEnum(
-                host_name,
-                1,
-                resume_handle,
-                win32netcon.MAX_PREFERRED_LENGTH)
-            for user_dict in user_list:
-                if user_dict['logon_server'] != '':
-                    user_set.add(user_dict['username'])
-            resume_handle = rt_res
+    if platform.system() == 'Windows':
+        import win32net
+        import win32netcon
+        resume_handle = 1
+        try:
+            while resume_handle:
+                (user_list, _, rt_res) = win32net.NetWkstaUserEnum(
+                    None,
+                    1,
+                    resume_handle,
+                    win32netcon.MAX_PREFERRED_LENGTH)
 
-    except win32net.error:
-        pass
+                for user_dict in user_list:
+                    if user_dict['logon_server'] != '':
+                        user_set.add(user_dict['username'])
+                resume_handle = rt_res
 
-    finally:
-        return len(user_set)
+        except:
+            pass
+
+        finally:
+            total_login_users = len(user_set)
+    else:
+        try:
+            p = subprocess.Popen('users', stdout=subprocess.PIPE, shell=True)
+            out = p.communicate()[0]
+            for user in out.split(' '):
+                user_set.add(user.strip('\n'))
+
+        except:
+            pass
+
+        finally:
+            total_login_users = len(user_set)
+
+    login_user_dict['ls'] = total_login_users
+    return login_user_dict
 
 
-print get_total_login_users(r'localhost')
+print get_total_login_users()

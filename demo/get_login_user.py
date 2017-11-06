@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding = utf8
 
-import subprocess
+import psutil
 import platform
 
 
@@ -33,11 +33,9 @@ def get_total_login_users():
             total_login_users = len(user_set)
     else:
         try:
-            p = subprocess.Popen('users', stdout=subprocess.PIPE, shell=True)
-            out = p.communicate()[0]
-            for user in out.split(' '):
-                user_set.add(user.strip('\n'))
-
+            users = psutil.users()
+            for user in users:
+                user_set.add(user.name)
         except:
             pass
 

@@ -5,7 +5,6 @@ import psutil
 
 
 def get_total_login_users():
-    total_login_users = 0
     ls_dict = {}
     user_set = set()
     try:
@@ -15,10 +14,7 @@ def get_total_login_users():
     except:
         pass
 
-    finally:
-        total_login_users = len(user_set)
-
-    ls_dict['ls'] = total_login_users
+    ls_dict['ls'] = len(user_set)
     return ls_dict
 
 

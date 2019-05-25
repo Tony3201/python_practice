@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/bin/env python
 #coding:utf8
 
 __author__ = 'LEo'
